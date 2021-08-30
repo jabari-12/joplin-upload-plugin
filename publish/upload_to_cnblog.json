@@ -1,0 +1,14 @@
+{
+	"manifest_version": 1,
+	"id": "upload_to_cnblog",
+	"app_min_version": "2.0",
+	"version": "1.1.0",
+	"name": "Upload note to cnblog",
+	"description": "upload images in the select note to cnblog and replace image path by cnblog image url, then upload note to cnblog",
+	"author": "Jabari",
+	"homepage_url": "https://github.com/jabari-12/joplin-upload-plugin",
+	"repository_url": "https://github.com/jabari-12/joplin-upload-plugin",
+	"keywords": [],
+	"_publish_hash": "sha256:8723834549f2bf0f8fe41c7ca2db67f843464eb548802222527d45deabe4988e",
+	"_publish_commit": "master:4fcf457529b123ef494dcd44773a1eb1c896a170"
+}
