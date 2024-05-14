@@ -18,6 +18,7 @@ Joplin插件，上传Markdown格式的笔记到博客园
 #### 编译教程
 
 ```
+npm install -g yo generator-joplin webpack webpack-cli
 npm run dist
 ```
 
