@@ -19,6 +19,8 @@ Joplin插件，上传Markdown格式的笔记到博客园
 
 ```
 npm install -g yo generator-joplin webpack webpack-cli
+npm install metaweblog-api plantuml-encoder
+yo joplin  # 先随便写参数，然后最后更新的时候不要更新src下的index.ts和manifest.json，其他全部overlay
 npm run dist
 ```
 
