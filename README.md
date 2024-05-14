@@ -15,9 +15,11 @@ Joplin插件，上传Markdown格式的笔记到博客园
 
 在编写笔记添加图片时建议**直接使用添加文件上传**，方便同步，方便上传至cnblog
 
-#### 安装教程
-1.  yo joplin （选择替换时一定要选 n）
-2.  npm run dist
+#### 编译教程
+
+```
+npm run dist
+```
 
 #### 使用说明
 
@@ -41,14 +43,35 @@ Joplin插件，上传Markdown格式的笔记到博客园
 4.  新建 Pull Request
 
 
-## Joplin Plugin (common)
+## Joplin Plugin Tutorial(common)
 
-This is a template to create a new Joplin plugin.
+参考：[Getting started with plugin development](https://joplinapp.org/help/api/get_started/plugins/)
 
-The main two files you will want to look at are:
+### Setting up your environment
 
-- `/src/index.ts`, which contains the entry point for the plugin source code.
-- `/src/manifest.json`, which is the plugin manifest. It contains information such as the plugin a name, version, etc.
+First you need to setup your environment:
+
+- Make sure you have [Node.js](https://nodejs.org/) and [git](https://git-scm.com/) installed.
+- Install [Joplin](https://joplinapp.org/)
+
+But first install [Yeoman](https://yeoman.io/) and the [Joplin Plugin Generator](https://github.com/laurent22/joplin/tree/dev/packages/generator-joplin):
+
+```
+npm install -g yo generator-joplin
+```
+
+Then, in the directory where you plan to develop the plugin, run:
+```
+yo joplin
+```
+
+This will generate the basic scaffolding of the plugin. At the root of it, there are a number of configuration files which you normally won't need to change. Then the `src/` directory will contain your code. By default, the project uses TypeScript, but you are free to use plain JavaScript too - eventually the project is compiled to plain JS in any case.
+
+The `src/` directory also contains a [manifest.json](https://joplinapp.org/help/api/references/plugin_manifest) file, which contains the various information about the plugin that was set in the initial generation of the scaffolding, such as its name, homepage URL, etc. You can edit this at any time, but editing it after it has been published may cause users to have to download it again.
+
+### Run Joplin in Development Mode
+
+You should test your plugin in [Development Mode](https://joplinapp.org/help/api/references/development_mode). Doing so means that Joplin will run using a different profile, so you can experiment with the plugin without risking to accidentally change or delete your data.
 
 ### Building the plugin
 
@@ -66,4 +89,25 @@ In general this command tries to do the right thing - in particular it's going t
 
 The file that may cause problem is "webpack.config.js" because it's going to be overwritten. For that reason, if you want to change it, consider creating a separate JavaScript file and include it in webpack.config.js. That way, when you update, you only have to restore the line that include your file.
 
+### Install the plugin
 
+Open Joplin **Configuration \> Plugins** section. Under Advanced Settings, add the plugin path in the **Development plugins** text field.This should be the path to your main plugin directory, i.e. `path/to/your/root/plugin/directory`.
+
+### Test the Plugin, Hello World!
+
+Restart the Development app from the command line/terminal, and Joplin should load the plugin and execute its `onStart` handler. If all went well you should see the test message in the plugin console: "Hello world. Test plugin started!". You will also be able to see the information from the manifest in the **Settings \> Plugins**
+
+### Next steps
+
+Great, you now have the basics of a working plugin!
+
+- Start the [plugin tutorial](https://joplinapp.org/help/api/tutorials/toc_plugin) to learn how to use the plugin API.
+- See what the plugin API supports, [Plugin API reference](https://joplinapp.org/api/references/plugin_api/classes/joplin.html).
+- For plugin feature ideas, see this thread: https://discourse.joplinapp.org/t/any-suggestions-on-what-plugins-could-be-created/9479
+
+This is a template to create a new Joplin plugin.
+
+The main two files you will want to look at are:
+
+- `/src/index.ts`, which contains the entry point for the plugin source code.
+- `/src/manifest.json`, which is the plugin manifest. It contains information such as the plugin a name, version, etc.
